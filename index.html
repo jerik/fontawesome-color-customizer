@@ -1,0 +1,94 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+	<title>Font awesome color customizer</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="icon" type="image/png" href="favicon.ico">
+	<link rel="manifest" href="site.webmanifest">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" type="text/css" charset="utf-8">
+	<style type="text/css" media="screen">
+		* {
+			font-family: 'verdana';
+		}
+		i {
+			padding: 10px; 
+		}
+		
+	</style>
+	<script
+	  src="https://code.jquery.com/jquery-3.4.1.min.js"
+	  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	  crossorigin="anonymous"></script>
+
+	<script type="text/javascript" charset="utf-8">
+		default_icon = '<i class="fab fa-algolia"></i>';
+		function do_generation() {
+			sizes = [48, 60, 72, 94, 106];
+			font_icon = $("#use-icon").val();
+			console.log(font_icon);
+			if (font_icon == '') {
+				// font_icon = '<i class="fab fa-algolia"></i>';
+				font_icon = default_icon;
+			}
+			font_color = $("#use-color").val();
+			console.log(font_icon);
+			$("#output").empty();
+			$.each(sizes, function(i) {
+				// console.log(sizes[i]);
+				current_size = sizes[i] + "px";
+				console.log(current_size);
+				current_font = $(font_icon).css('font-size', current_size);
+				current_font = $(current_font).css('color', font_color);
+				$("#output").append(current_font);
+			})
+		}
+
+		function show_color() {
+			font_color = $("#use-color").val();
+			console.log(font_color);
+			$("#bgcolor").css('background-color' , font_color);
+		}
+
+		function goto_colors() {
+			window.open('https://htmlcolorcodes.com/', 'html-colors');
+
+		}
+	</script>
+		
+	
+</head>
+<body>
+	<h1 id="heading">Font awesome color customizer</h1>
+	<form action="https://fontawesome.com/icons?d=gallery&q=dog" method="get" accept-charset="utf-8" target="_blank">
+	<p style="margin-bottom:2px; font-size: 12px">
+		1. Search icon on fontawesome
+	</p>
+		<input type="text" name="q" value="" placeholder="eg: person" onfocus="this.value=''">
+		<input type="submit" value="Continue &rarr;">
+	</form>
+
+	<p style="margin-bottom:2px; font-size: 12px">
+		2. Customize icon: paste html, change color and generate
+	</p>
+	<input type="text" name="use-icon"  id="use-icon" value="" placeholder="default: fa-algolia" onfocus="this.value=''">
+	<input type="text" name="use-color"  id="use-color" value="#3498DB" style="width: 70px" onchange="show_color()"
+																							onfocus="this.select()">
+	<input type="text" name="bgcolor"  id="bgcolor" style="background-color:#3498DB; width:20px; text-align:center" onclick="goto_colors()" value="&#8663;">
+	<input type="submit" name="generate-font" id="generate-font" value="Generate icon &rarr;">
+	<script type="text/javascript" charset="utf-8">
+		$( "#generate-font" ).click(function() {
+			  do_generation();
+		});
+	</script>
+
+	<p id="output">
+	Example: 
+	<i class="fa fa-car" style="font-size:48px;color:#3498DB"></i>
+	<i class="fa fa-car" style="font-size:60px;color:#3498DB"></i>
+	<i class="fa fa-car" style="font-size:72;color:#3498DB"></i>
+	</p>
+</body>
+</html>
