@@ -16,6 +16,9 @@
 		i {
 			padding: 10px; 
 		}
+		.ifirst {
+			width: 250px;
+		}
 		
 	</style>
 	<script
@@ -56,26 +59,29 @@
 			window.open('https://htmlcolorcodes.com/', 'html-colors');
 
 		}
+
+		function set_placeholder() {
+			$("#use-icon").attr("placeholder", default_icon).val("").focus().blur();
+		}
 	</script>
 		
 	
 </head>
-<body>
+<body onload="set_placeholder()">
 	<h1 id="heading">Webfont color customizer</h1>
 	<form action="https://fontawesome.com/icons?d=gallery&q=" method="get" accept-charset="utf-8" target="_blank">
 	<p style="margin-bottom:2px; font-size: 12px">
 		1. Search icon on font awesome
 	</p>
-		<input type="text" name="q" value="" placeholder="eg: person" onfocus="this.value=''">
+		<input type="text" name="q" value="" placeholder="eg: person" onfocus="this.value=''" class="ifirst">
 		<input type="submit" value="Continue &rarr;">
 	</form>
 
 	<p style="margin-bottom:2px; font-size: 12px">
 		2. Customize font awesome icon: paste html, change color and generate
 	</p>
-	<input type="text" name="use-icon"  id="use-icon" value="" placeholder="default: fa-algolia" onfocus="this.value=''">
-	<input type="text" name="use-color"  id="use-color" value="#3498DB" style="width: 70px" onchange="show_color()"
-																							onfocus="this.select()">
+	<input type="text" name="use-icon"  id="use-icon" value="" placeholder="default: fa-algolia" onfocus="this.value=''" class="ifirst">
+	<input type="text" name="use-color"  id="use-color" value="#3498DB" style="width: 70px" onchange="show_color()" onfocus="this.select()">
 	<input type="text" name="bgcolor"  id="bgcolor" style="background-color:#3498DB; width:20px; text-align:center" onclick="goto_colors()" value="&#8663;">
 	<input type="submit" name="generate-font" id="generate-font" value="Generate icon &rarr;">
 	<script type="text/javascript" charset="utf-8">
